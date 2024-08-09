@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: hello
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      imagePullSecrets: 
+      - name: registry-credentials
+      containers:
+      - name: flask-app
+        image: registry.gitlab.com/isa_devops/cicd:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000

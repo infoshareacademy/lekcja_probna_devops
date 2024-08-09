@@ -1,0 +1,7 @@
+[[runners]]
+  [runners.docker]
+    image = "gitlab-runner-kubectl"
+    network_mode = "kind"
+    privileged = true
+    tls_verify = false
+    volumes = ["/var/run/docker.sock:/var/run/docker.sock", "/cache"]
